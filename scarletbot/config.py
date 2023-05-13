@@ -14,21 +14,17 @@ class Config(object):
     # REQUIRED
     # Login to https://my.telegram.org and fill in these slots with the details given by it
 
-    API_ID = "14050586" # integer value, dont use ""
-    API_HASH = "42a60d9c657b106370c79bb0a8ac560c"
-    TOKEN = ""  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = "5475511278" # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "projectstark"
-    SUPPORT_CHAT = "scarletsupportchat"  # Your own group for support, do not add the @
-    JOIN_LOGGER = (
-        -1001871477087
-    )  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = (
-        -1001871477087
-    )  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    MONGO_DB_URI= " mongodb+srv://Cutie:cutie1@cluster0.dctlhwo.mongodb.net/?retryWrites=true&w=majority"
+    API_ID = int(os.environ.get('API_ID'))
+    API_HASH = os.environ.get('API_HASH')
+    TOKEN = os.environ.get('TOKEN')  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    OWNER_ID = int(os.environ.get('OWNER_ID')) # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME =  os.environ.get('OWNER_USERNAME')
+    SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT')  # Your own group for support, do not add the @
+    JOIN_LOGGER = int(os.environ.get('JOIN_LOGGER'))  # Prints any new group the bot is added to, prints just the name and ID.
+    EVENT_LOGS =  int(os.environ.get('EVENT_LOGS')) # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    MONGO_DB_URI=  os.environ.get('MONGO_DB_URI')
     # RECOMMENDED
-    SQLALCHEMY_DATABASE_URI = ""  # needed for any database modules
+    SQLALCHEMY_DATABASE_URI =  os.environ.get('SQLALCHEMY_DATABASE_URI')  # needed for any database modules
     LOAD = []
     NO_LOAD = ["rss", "cleaner", "connection", "math"]
     WEBHOOK = False
@@ -39,14 +35,14 @@ class Config(object):
 
     # OPTIONAL
     ##List of id's -  (not usernames) for users which have sudo access to the bot.
-    DRAGONS = get_user_list("elevated_users.json", "1808943146")
+    DRAGONS = list(map(int, os.environ.get('DRAGONS', '621000795 1491477188').split()))
     ##List of id's - (not usernames) for developers who will have the same perms as the owner
-    DEV_USERS = get_user_list("elevated_users.json", "5231150389")
+    DEV_USERS = list(map(int, os.environ.get('DEV_USERS', '621000795 1491477188').split()))
     ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
-    DEMONS = get_user_list("elevated_users.json", "1808943146")
+    DEMONS = list(map(int, os.environ.get('DEMONS', '621000795 1491477188').split()))
     # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
-    TIGERS = get_user_list("elevated_users.json", "5231150389")
-    WOLVES = get_user_list("elevated_users.json", "whitelists")
+    TIGERS = list(map(int, os.environ.get('TIGERS', '621000795 1491477188').split()))
+    WOLVES = list(map(int, os.environ.get('WOLVES', '621000795 1491477188').split()))
     DONATION_LINK = none # EG, paypal
     CERT_PATH = None
     PORT = 5000
