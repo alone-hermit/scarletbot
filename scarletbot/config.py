@@ -43,7 +43,7 @@ class Config(object):
     # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     TIGERS = list(map(int, os.environ.get('TIGERS', '621000795 1491477188').split()))
     WOLVES = list(map(int, os.environ.get('WOLVES', '621000795 1491477188').split()))
-    DONATION_LINK = none # EG, paypal
+    DONATION_LINK = None # EG, paypal
     CERT_PATH = None
     PORT = 5000
     DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
