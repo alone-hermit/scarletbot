@@ -62,7 +62,7 @@ class Config(object):
     )
     BL_CHATS = []  # List of groups that you want blacklisted.
     ALLOW_CHATS = []
-    SPAMMERS = None
+    #SPAMMERS = None
 
 
 class Production(Config):
