@@ -24,6 +24,7 @@ class Config(object):
     EVENT_LOGS =  int(os.environ.get('EVENT_LOGS')) # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
     MONGO_DB_URI=  os.environ.get('MONGO_DB_URI')
     START_IMG = "https://telegra.ph/file/9365a3b5dbfeae8527a11.jpg"
+    TEMP_DOWNLOAD_DIRECTORY = "./downloads/"
     # RECOMMENDED
     DATABASE_URL =  os.environ.get('SQLALCHEMY_DATABASE_URI')  # needed for any database modules
     LOAD = []
